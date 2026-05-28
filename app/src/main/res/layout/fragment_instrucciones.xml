@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#2C2C2C">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#2C2C2C"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="#FF5722">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reglas del Juego"
+            android:textColor="#FF5722"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_gravity="center" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ¿Cómo se juega? -->
+            <TextView
+                android:id="@+id/tvTituloComo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿Cómo se juega?"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="19sp"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:id="@+id/tvDescripcionComo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Los jugadores forman un círculo y en el centro colocan el dispositivo móvil, luego tocan el botón parpadeante para girar la botella.\nEl jugador que señale la botella debe cumplir el reto que lanza la app, de lo contrario abandona el juego."
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:lineSpacingExtra="5dp"
+                android:layout_marginBottom="32dp"/>
+
+            <!-- ¿Quién gana? -->
+            <TextView
+                android:id="@+id/tvTituloGana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿Quién gana?"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="19sp"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:id="@+id/tvDescripcionGana"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gana el último jugador que no abandone el juego."
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:layout_marginBottom="45dp"/>
+
+            <!-- Animación Lottie -->
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieTriunfo"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/animacion_ganador"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
