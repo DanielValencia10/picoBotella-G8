@@ -1,3 +1,27 @@
 <resources>
-    <string name="app_name">picobotellaG8</string>
+    <string name="app_name">PicoBotella</string>
+
+    <!-- HU: Splash Screen -->
+    <string name="splash_welcome">Cargando PicoBotella...</string>
+
+    <!-- HU: Home Principal -->
+    <string name="botella_del_juego">Botella del juego</string>
+    <string name="presioname">Presióname</string>
+
+    <!-- HU: Juego de la Botella -->
+    <string name="instrucciones">Instrucciones</string>
+    <string name="retos">Retos</string>
+    <string name="compartir">Compartir</string>
+    <string name="girar_botella">¡Girar Botella!</string>
+
+    <!-- HU: Gestión de Retos -->
+    <string name="agregar_reto">Agregar Reto</string>
+    <string name="editar_reto">Editar Reto</string>
+    <string name="eliminar_reto">¿Desea eliminar este reto?</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="reto_descripcion_hint">Escribe el reto aquí</string>
+
+    <!-- HU: Compartir App -->
+    <string name="mensaje_compartir">¡Mira esta divertida app de PicoBotella!</string>
 </resources>
