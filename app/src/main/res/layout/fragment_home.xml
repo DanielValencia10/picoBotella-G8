@@ -40,7 +40,7 @@
             android:layout_gravity="center"
             android:textSize="40sp"
             android:textStyle="bold"
-            android:textColor="#FF6F00"
+            android:textColor="@color/colorBlanco"
             tools:text="3" />
     </FrameLayout>
 
@@ -48,11 +48,14 @@
         android:id="@+id/btnPresioname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="16dp"
         android:text="@string/presioname"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:textColor="@android:color/white"
         android:backgroundTint="#FF6F00"
         android:layout_marginBottom="48dp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
