@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorNaranja">#FF6200EE</color> <!-- Naranja principal solicitado -->
+    <color name="colorNaranja">#FF6F00</color> <!-- Naranja principal solicitado -->
     <color name="colorNegro">#000000</color>
     <color name="colorGrisOscuro">#2C2C2C</color>
     <color name="colorBlanco">#FFFFFF</color>
