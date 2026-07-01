@@ -24,4 +24,8 @@
 
     <!-- HU: Compartir App -->
     <string name="mensaje_compartir">¡Mira esta divertida app de PicoBotella!</string>
+
+    <string name="calificar_app">Calificar la aplicación</string>
+    <string name="audio_fondo">Silenciar o activar el audio de fondo</string>
+
 </resources>

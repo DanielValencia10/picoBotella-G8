@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.equipo8.picobotella.R
 import com.equipo8.picobotella.data.repository.RetoRepository
 import com.equipo8.picobotella.databinding.FragmentHomeBinding
+import com.equipo8.picobotella.ui.toolbar.CustomToolbarFragment
 
 /**
  * Controlador de la Vista (Fragment) para la Ventana Home Principal.
@@ -42,6 +43,16 @@ class HomeFragment : Fragment() {
         inicializarMusicaFondo()
         configurarObservadores()
         configurarOyentesEventos()
+        configurarToolbar()
+    }
+
+    // HU: Toolbar Personalizada - se monta como fragmento hijo dentro de fragment_home.xml
+    private fun configurarToolbar() {
+        if (childFragmentManager.findFragmentById(R.id.toolbarContainer) == null) {
+            childFragmentManager.beginTransaction()
+                .replace(R.id.toolbarContainer, CustomToolbarFragment())
+                .commit()
+        }
     }
 
     private fun configurarAnimacionBoton() {
@@ -57,7 +68,6 @@ class HomeFragment : Fragment() {
         try {
             mediaPlayer = MediaPlayer.create(requireContext(), R.raw.sonido_fondo).apply {
                 isLooping = true
-                start()
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -70,6 +80,15 @@ class HomeFragment : Fragment() {
 
             if (numero == 0) {
                 binding.tvContador.text = "¡Ya!"
+            }
+        }
+
+        // HU: Toolbar Personalizada (C3) - el interruptor de audio pausa/reanuda la música real
+        viewModel.isAudioEnabled.observe(viewLifecycleOwner) { habilitado ->
+            if (habilitado) {
+                mediaPlayer?.takeIf { !it.isPlaying }?.start()
+            } else {
+                mediaPlayer?.takeIf { it.isPlaying }?.pause()
             }
         }
     }
@@ -91,7 +110,7 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        if (mediaPlayer != null && !mediaPlayer!!.isPlaying) {
+        if (viewModel.isAudioEnabled.value == true && mediaPlayer?.isPlaying == false) {
             mediaPlayer?.start()
         }
     }
