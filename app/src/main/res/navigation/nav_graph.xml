@@ -31,7 +31,16 @@
         <action
             android:id="@+id/action_home_to_compartir"
             app:destination="@id/compartir_fragment" />
+        <action
+            android:id="@+id/action_home_to_calificar"
+            app:destination="@id/calificar_fragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/calificar_fragment"
+        android:name="com.equipo8.picobotella.ui.calificar.CalificarFragment"
+        android:label="CalificarFragment"
+        tools:layout="@layout/fragment_calificar" />
 
     <fragment
         android:id="@+id/instrucciones_fragment"

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#2C2C2C">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#2C2C2C"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="#FF5722">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calificar_titulo"
+            android:textColor="#FF5722"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_gravity="center" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingHorizontal="32dp">
+
+        <TextView
+            android:id="@+id/tvPregunta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/calificar_pregunta"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="19sp"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1"
+            android:rating="0"
+            android:progressTint="@color/colorNaranja"
+            android:secondaryProgressTint="@color/colorNaranja"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:id="@+id/tvAvisoTienda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/calificar_aviso_tienda"
+            android:textColor="#CCCCCC"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="32dp" />
+
+        <Button
+            android:id="@+id/btnEnviarCalificacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calificar_enviar"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/colorNaranja"
+            android:paddingHorizontal="24dp" />
+
+    </LinearLayout>
+</LinearLayout>
