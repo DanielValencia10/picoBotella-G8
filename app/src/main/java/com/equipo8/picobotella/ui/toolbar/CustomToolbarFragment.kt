@@ -70,11 +70,7 @@ class CustomToolbarFragment : Fragment() {
         // C2: HU 4.0 - Calificar la aplicación
         binding.btnCalificar.setOnClickListener {
             animarClick(it) {
-                // TODO: HU 4.0 - Calificar la aplicación (pendiente de implementar
-                // por la persona encargada de esa historia de usuario).
-                // Cuando exista el fragmento correspondiente, agregar su destino
-                // y la acción "action_home_to_calificar" en nav_graph.xml, y navegar así:
-                // findNavController().navigate(R.id.action_home_to_calificar)
+                findNavController().navigate(R.id.action_home_to_calificar)
             }
         }
 

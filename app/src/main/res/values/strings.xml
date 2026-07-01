@@ -28,4 +28,13 @@
     <string name="calificar_app">Calificar la aplicación</string>
     <string name="audio_fondo">Silenciar o activar el audio de fondo</string>
 
+    <!-- HU 4.0: Calificar la aplicación -->
+    <string name="calificar_titulo">Califica PicoBotella</string>
+    <string name="calificar_pregunta">¿Qué te pareció tu experiencia con PicoBotella?</string>
+    <string name="calificar_aviso_tienda">Como la app aún no está publicada en Google Play, al confirmar tu calificación te llevaremos a la ficha de Nequi en la Play Store para simular el proceso de calificación.</string>
+    <string name="calificar_enviar">Enviar calificación</string>
+    <string name="calificar_seleccion_vacia">Selecciona al menos una estrella para calificar</string>
+    <string name="calificar_agradecimiento">¡Gracias por tu calificación!</string>
+    <string name="url_play_store_simulada">https://play.google.com/store/apps/details?id=com.nequi.MobileApp&amp;hl=es_419&amp;gl=es</string>
+
 </resources>
