@@ -5,4 +5,10 @@
         <item name="colorPrimaryDark">#C62828</item>
         <item name="colorAccent">#FF6200EE</item>
     </style>
+
+    <style name="Theme.PicoBotella.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/colorNegro</item>
+        <item name="android:statusBarColor">@color/colorNegro</item>
+        <item name="android:navigationBarColor">@color/colorNegro</item>
+    </style>
 </resources>
