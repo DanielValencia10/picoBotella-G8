@@ -15,6 +15,8 @@
     <string name="girar_botella">¡Girar Botella!</string>
 
     <!-- HU: Gestión de Retos -->
+    <string name="volver">Volver</string>
+    <string name="reto_icono">Ícono del reto</string>
     <string name="agregar_reto">Agregar Reto</string>
     <string name="editar_reto">Editar Reto</string>
     <string name="eliminar_reto">¿Desea eliminar este reto?</string>
