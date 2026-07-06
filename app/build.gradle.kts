@@ -57,6 +57,7 @@ dependencies {
     // Room
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
+    implementation(libs.constraintlayout)
     kapt(libs.androidx.room.compiler)
 
     // Coroutines
