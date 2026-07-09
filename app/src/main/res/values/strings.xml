@@ -25,7 +25,9 @@
     <string name="reto_descripcion_hint">Escribe el reto aquí</string>
 
     <!-- HU: Compartir App -->
-    <string name="mensaje_compartir">¡Mira esta divertida app de PicoBotella!</string>
+    <string name="mensaje_compartir">App pico botella\nSolo los valientes lo juegan !!</string>
+    <string name="link_compartir">https://play.google.com/store/apps/details?id=com.nequi.MobileApp&amp;hl=es_419&amp;gl=es</string>
+    <string name="titulo_compartir">App pico botella</string>
 
     <string name="calificar_app">Calificar la aplicación</string>
     <string name="audio_fondo">Silenciar o activar el audio de fondo</string>
