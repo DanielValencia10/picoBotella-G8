@@ -82,7 +82,7 @@ class RetosFragment : Fragment() {
             findNavController().navigateUp()
         }
 
-        // FAB naranja abre diálogo agregar reto (HU 7.0) Pendiente
+        // FAB naranja abre diálogo agregar reto (HU 7.0)
         binding.fabAgregarReto.setOnClickListener {
             AgregarRetoDialog { descripcion ->
                 viewModel.agregarReto(descripcion)
