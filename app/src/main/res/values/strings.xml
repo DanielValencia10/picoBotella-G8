@@ -17,12 +17,13 @@
     <!-- HU: Gestión de Retos -->
     <string name="volver">Volver</string>
     <string name="reto_icono">Ícono del reto</string>
-    <string name="agregar_reto">Agregar Reto</string>
+    <string name="agregar_reto">Agregar reto</string>
     <string name="editar_reto">Editar Reto</string>
     <string name="eliminar_reto">¿Desea eliminar este reto?</string>
     <string name="confirmar">Confirmar</string>
     <string name="cancelar">Cancelar</string>
-    <string name="reto_descripcion_hint">Escribe el reto aquí</string>
+    <string name="guardar">Guardar</string>
+    <string name="reto_descripcion_hint">Escriba el reto</string>
 
     <!-- HU: Compartir App -->
     <string name="mensaje_compartir">¡Mira esta divertida app de PicoBotella!</string>
