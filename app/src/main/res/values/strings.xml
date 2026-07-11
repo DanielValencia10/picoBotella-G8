@@ -2,7 +2,7 @@
     <string name="app_name">PicoBotella</string>
 
     <!-- HU: Splash Screen -->
-    <string name="splash_welcome">Cargando PicoBotella...</string>
+    <string name="splash_welcome">pico botella</string>
 
     <!-- HU: Home Principal -->
     <string name="botella_del_juego">Botella del juego</string>

@@ -34,7 +34,7 @@ class SplashFragment : Fragment() {
         // Simulación de carga y navegación al Home
         Handler(Looper.getMainLooper()).postDelayed({
             findNavController().navigate(R.id.action_splash_to_home)
-        }, 2000)
+        }, 5000)
     }
 
     override fun onDestroyView() {
