@@ -1,4 +1,4 @@
-package com.equipo8.picobotella.ui.home
+package com.equipo8.picobotella.view.fragment
 
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -9,9 +9,8 @@ import android.view.animation.AlphaAnimation
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.equipo8.picobotella.R
-import com.equipo8.picobotella.data.repository.RetoRepository
 import com.equipo8.picobotella.databinding.FragmentHomeBinding
-import com.equipo8.picobotella.ui.toolbar.CustomToolbarFragment
+import com.equipo8.picobotella.viewmodel.HomeViewModel
 
 /**
  * Controlador de la Vista (Fragment) para la Ventana Home Principal.
@@ -35,9 +34,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val repository = RetoRepository()
-        val factory = HomeViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
+        // Inicialización del ViewModel sin Factory
+        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         configurarAnimacionBoton()
         inicializarMusicaFondo()
@@ -79,7 +77,7 @@ class HomeFragment : Fragment() {
             binding.tvContador.text = numero.toString()
 
             if (numero == 0) {
-                binding.tvContador.text = "¡Ya!"
+                binding.tvContador.text = getString(R.string.ya)
             }
         }
 

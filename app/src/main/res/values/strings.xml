@@ -7,6 +7,7 @@
     <!-- HU: Home Principal -->
     <string name="botella_del_juego">Botella del juego</string>
     <string name="presioname">Presióname</string>
+    <string name="ya">¡Ya!</string>
 
     <!-- HU: Juego de la Botella -->
     <string name="instrucciones">Instrucciones</string>

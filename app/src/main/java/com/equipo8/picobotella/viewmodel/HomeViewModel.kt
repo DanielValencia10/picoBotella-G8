@@ -1,18 +1,21 @@
-package com.equipo8.picobotella.ui.home
+package com.equipo8.picobotella.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.equipo8.picobotella.data.repository.RetoRepository
+import com.equipo8.picobotella.repository.RetoRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /**
- * ViewModel encargado de la lógica de negocio y la gestión de estados de la pantalla principal
- * Pertenece a la HU2: Ventana Home Principal
+ * ViewModel encargado de la lógica de negocio y la gestión de estados de la pantalla principal.
+ * Usa AndroidViewModel para acceder al contexto y crear el repositorio sin necesidad de una Factory.
  */
-class HomeViewModel(private val repository: RetoRepository) : ViewModel() {
+class HomeViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val repository: RetoRepository = RetoRepository(application)
 
     // Control del estado del audio (Habilitado/Deshabilitado)
     private val _isAudioEnabled = MutableLiveData<Boolean>(true)

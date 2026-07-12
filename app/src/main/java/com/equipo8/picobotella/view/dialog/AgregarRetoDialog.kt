@@ -1,4 +1,4 @@
-package com.equipo8.picobotella.ui.dialogs
+package com.equipo8.picobotella.view.dialog
 
 import android.graphics.Color
 import android.os.Bundle

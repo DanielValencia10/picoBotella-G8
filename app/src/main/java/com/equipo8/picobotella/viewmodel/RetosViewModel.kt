@@ -1,18 +1,20 @@
-package com.equipo8.picobotella.ui.retos
+package com.equipo8.picobotella.viewmodel
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.equipo8.picobotella.data.repository.RetoRepository
 import com.equipo8.picobotella.model.Reto
+import com.equipo8.picobotella.repository.RetoRepository
 import kotlinx.coroutines.launch
 
 /**
  * ViewModel para la gestión de retos.
- * Pertenece a la HU: Gestión de Retos.
+ * Usa AndroidViewModel para acceder al contexto y crear el repositorio directamente.
  */
-class RetosViewModel(private val repository: RetoRepository) : ViewModel() {
+class RetosViewModel(application: Application) : AndroidViewModel(application) {
 
+    private val repository: RetoRepository = RetoRepository(application)
     val listaDeRetos = repository.todosLosRetos.asLiveData()
 
     fun agregarReto(descripcion: String) {
