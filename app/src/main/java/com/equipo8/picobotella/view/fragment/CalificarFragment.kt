@@ -1,4 +1,4 @@
-package com.equipo8.picobotella.ui.calificar
+package com.equipo8.picobotella.view.fragment
 
 import android.content.ActivityNotFoundException
 import android.content.Intent

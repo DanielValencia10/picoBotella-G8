@@ -1,16 +1,12 @@
-package com.equipo8.picobotella.ui.instrucciones
+package com.equipo8.picobotella.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.equipo8.picobotella.databinding.FragmentInstruccionesBinding
-
-// descomentar cuando el encargado de la HU2 cree HomeViewModel
-// import com.equipo8.picobotella.ui.home.HomeViewModel
 
 /**
  * Fragmento que muestra las instrucciones del juego.

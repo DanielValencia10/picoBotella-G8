@@ -1,4 +1,4 @@
-package com.equipo8.picobotella.ui.splash
+package com.equipo8.picobotella.view.fragment
 
 import android.os.Bundle
 import android.os.Handler
@@ -30,7 +30,7 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
+
         // Simulación de carga y navegación al Home
         Handler(Looper.getMainLooper()).postDelayed({
             findNavController().navigate(R.id.action_splash_to_home)

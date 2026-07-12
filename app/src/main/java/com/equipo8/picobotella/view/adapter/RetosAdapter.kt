@@ -1,4 +1,4 @@
-package com.equipo8.picobotella.ui.retos
+package com.equipo8.picobotella.view.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.equipo8.picobotella.databinding.ItemRetoBinding
 import com.equipo8.picobotella.model.Reto
+
 /**
  * Adaptador para el RecyclerView de retos.
  * Pertenece a la HU: Gestión de Retos.

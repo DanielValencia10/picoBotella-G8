@@ -1,4 +1,4 @@
-package com.equipo8.picobotella.ui.compartir
+package com.equipo8.picobotella.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

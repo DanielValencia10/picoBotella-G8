@@ -1,4 +1,4 @@
-package com.equipo8.picobotella.ui.retos
+package com.equipo8.picobotella.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.equipo8.picobotella.data.local.AppDatabase
-import com.equipo8.picobotella.data.repository.RetoRepository
 import com.equipo8.picobotella.databinding.FragmentRetosBinding
-import com.equipo8.picobotella.ui.dialogs.AgregarRetoDialog
-import com.equipo8.picobotella.ui.dialogs.EditarRetoDialog
-import com.equipo8.picobotella.ui.dialogs.EliminarRetoDialog
+import com.equipo8.picobotella.view.adapter.RetosAdapter
+import com.equipo8.picobotella.view.dialog.AgregarRetoDialog
+import com.equipo8.picobotella.view.dialog.EditarRetoDialog
+import com.equipo8.picobotella.view.dialog.EliminarRetoDialog
+import com.equipo8.picobotella.viewmodel.RetosViewModel
 
 /**
  * Fragmento para la gestión de retos.
@@ -37,11 +37,8 @@ class RetosFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Conectar base de datos Room al ViewModel
-        val db = AppDatabase.getDatabase(requireContext())
-        val repository = RetoRepository(db.retoDao())
-        val factory = RetosViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, factory)[RetosViewModel::class.java]
+        // Inicialización del ViewModel sin Factory (Usa AndroidViewModel internamente)
+        viewModel = ViewModelProvider(this)[RetosViewModel::class.java]
 
         configurarRecyclerView()
         configurarObservadores()
@@ -53,13 +50,13 @@ class RetosFragment : Fragment() {
         adapter = RetosAdapter(
             emptyList(),
             onEditClick = { reto ->
-                // lanza diálogo editar (HU 8.0) Pendiente
+                // lanza diálogo editar (HU 8.0)
                 EditarRetoDialog(reto) { retoActualizado ->
                     viewModel.editarReto(retoActualizado)
                 }.show(childFragmentManager, "EditarRetoDialog")
             },
             onDeleteClick = { reto ->
-                // lanza diálogo eliminar (HU 9.0) Pendiente
+                // lanza diálogo eliminar (HU 9.0)
                 EliminarRetoDialog(reto) { retoAEliminar ->
                     viewModel.eliminarReto(retoAEliminar)
                 }.show(childFragmentManager, "EliminarRetoDialog")
@@ -77,7 +74,7 @@ class RetosFragment : Fragment() {
     }
 
     private fun configurarBotones() {
-        // Botón atrás regresa al home (el audio se restablece vía HomeFragment.onResume)
+        // Botón atrás regresa al home
         binding.btnVolver.setOnClickListener {
             findNavController().navigateUp()
         }

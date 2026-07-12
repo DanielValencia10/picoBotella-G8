@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splash_fragment"
-        android:name="com.equipo8.picobotella.ui.splash.SplashFragment"
+        android:name="com.equipo8.picobotella.view.fragment.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
         <action
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/home_fragment"
-        android:name="com.equipo8.picobotella.ui.home.HomeFragment"
+        android:name="com.equipo8.picobotella.view.fragment.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
@@ -38,25 +38,25 @@
 
     <fragment
         android:id="@+id/calificar_fragment"
-        android:name="com.equipo8.picobotella.ui.calificar.CalificarFragment"
+        android:name="com.equipo8.picobotella.view.fragment.CalificarFragment"
         android:label="CalificarFragment"
         tools:layout="@layout/fragment_calificar" />
 
     <fragment
         android:id="@+id/instrucciones_fragment"
-        android:name="com.equipo8.picobotella.ui.instrucciones.InstruccionesFragment"
+        android:name="com.equipo8.picobotella.view.fragment.InstruccionesFragment"
         android:label="InstruccionesFragment"
         tools:layout="@layout/fragment_instrucciones" />
 
     <fragment
         android:id="@+id/retos_fragment"
-        android:name="com.equipo8.picobotella.ui.retos.RetosFragment"
+        android:name="com.equipo8.picobotella.view.fragment.RetosFragment"
         android:label="RetosFragment"
         tools:layout="@layout/fragment_retos" />
 
     <fragment
         android:id="@+id/compartir_fragment"
-        android:name="com.equipo8.picobotella.ui.compartir.CompartirFragment"
+        android:name="com.equipo8.picobotella.view.fragment.CompartirFragment"
         android:label="CompartirFragment"
         tools:layout="@layout/fragment_compartir" />
 
