@@ -11,14 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.equipo8.picobotella.R
 import com.equipo8.picobotella.databinding.FragmentHomeBinding
-import com.equipo8.picobotella.view.dialog.MostrarRetoDialog
 import com.equipo8.picobotella.viewmodel.HomeViewModel
+import com.equipo8.picobotella.view.dialog.MostrarRetoDialog
 
 /**
- * Controlador de la Vista (Fragment) para la Ventana Home Principal.
- * Pertenece a la HU2: Ventana Home Principal
- * HU 11: Giro de botella aleatorio
- * HU 12: Mostrar reto aleatorio
+ * Controlador de la Vista para la Ventana Home Principal.
+ * Conecta el giro de la botella con el Diálogo de Reto Aleatorio (HU 11 y 12).
  */
 class HomeFragment : Fragment() {
 
@@ -38,7 +36,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Inicialización del ViewModel sin Factory
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         configurarAnimacionBoton()
@@ -48,12 +45,61 @@ class HomeFragment : Fragment() {
         configurarToolbar()
     }
 
-    // HU: Toolbar Personalizada - se monta como fragmento hijo dentro de fragment_home.xml
     private fun configurarToolbar() {
         if (childFragmentManager.findFragmentById(R.id.toolbarContainer) == null) {
             childFragmentManager.beginTransaction()
                 .replace(R.id.toolbarContainer, CustomToolbarFragment())
                 .commit()
+        }
+    }
+
+    private fun configurarObservadores() {
+        // Observar el contador para mostrar el número grande en el centro
+        viewModel.contadorRegresivo.observe(viewLifecycleOwner) { numero ->
+            if (numero > 0) {
+                binding.tvContador.text = numero.toString()
+                binding.tvContador.visibility = View.VISIBLE
+            } else {
+                binding.tvContador.visibility = View.GONE
+            }
+        }
+
+        // Observar cuando llega un reto aleatorio desde el ViewModel
+        viewModel.retoAleatorio.observe(viewLifecycleOwner) { reto ->
+            reto?.let {
+                val dialog = MostrarRetoDialog(it) {
+                    viewModel.limpiarRetoAleatorio()
+                    viewModel.restaurarAudio()
+                }
+                dialog.show(childFragmentManager, "MostrarRetoDialog")
+            }
+        }
+
+        // Si no hay retos en la base de datos
+        viewModel.sinRetos.observe(viewLifecycleOwner) { sinRetos ->
+            if (sinRetos) {
+                Toast.makeText(requireContext(), "No hay retos guardados. ¡Agrega uno!", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        // Ocultar botón mientras se está "girando" (contando)
+        viewModel.isJugando.observe(viewLifecycleOwner) { jugando ->
+            binding.btnPresioname.visibility = if (jugando) View.GONE else View.VISIBLE
+        }
+
+        // Control de audio
+        viewModel.isAudioEnabled.observe(viewLifecycleOwner) { habilitado ->
+            if (habilitado) {
+                mediaPlayer?.takeIf { !it.isPlaying }?.start()
+            } else {
+                mediaPlayer?.takeIf { it.isPlaying }?.pause()
+            }
+        }
+    }
+
+    private fun configurarOyentesEventos() {
+        binding.btnPresioname.setOnClickListener {
+            viewModel.iniciarJuego() // Llama a la lógica completa (conteo + reto)
         }
     }
 
@@ -71,90 +117,17 @@ class HomeFragment : Fragment() {
             mediaPlayer = MediaPlayer.create(requireContext(), R.raw.sonido_fondo).apply {
                 isLooping = true
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    private fun configurarObservadores() {
-        // HU 11 C5: Contador regresivo 3,2,1,0
-        viewModel.contadorRegresivo.observe(viewLifecycleOwner) { numero ->
-            binding.tvContador.text = numero.toString()
-
-            if (numero == 0) {
-                binding.tvContador.text = getString(R.string.ya)
-            }
-        }
-
-        // HU 3 C3: Control de audio desde la toolbar
-        viewModel.isAudioEnabled.observe(viewLifecycleOwner) { habilitado ->
-            if (habilitado) {
-                mediaPlayer?.takeIf { !it.isPlaying }?.start()
-            } else {
-                mediaPlayer?.takeIf { it.isPlaying }?.pause()
-            }
-        }
-
-        // HU 11 C7: Ocultar/mostrar botón según estado del juego
-        viewModel.isJugando.observe(viewLifecycleOwner) { jugando ->
-            if (jugando) {
-                binding.btnPresioname.visibility = View.GONE
-                // HU 11 C8: Pausar audio de fondo mientras se juega
-                mediaPlayer?.takeIf { it.isPlaying }?.pause()
-            } else {
-                binding.btnPresioname.visibility = View.VISIBLE
-            }
-        }
-
-        // HU 12: Cuando se obtiene un reto aleatorio, mostrar el diálogo
-        viewModel.retoAleatorio.observe(viewLifecycleOwner) { reto ->
-            if (reto != null) {
-                val dialogFragment = MostrarRetoDialog(
-                    reto = reto,
-                    onDialogDismiss = {
-                        viewModel.restaurarAudio()
-                    }
-                )
-                dialogFragment.show(childFragmentManager, "MostrarRetoDialog")
-
-                // Limpiar el LiveData para que no se vuelva a mostrar
-                viewModel.limpiarRetoAleatorio()
-            }
-        }
-
-        // Mostrar mensaje si no hay retos disponibles
-        viewModel.sinRetos.observe(viewLifecycleOwner) { noHayRetos ->
-            if (noHayRetos) {
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.sin_retos_disponibles),
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-        }
-    }
-
-    private fun configurarOyentesEventos() {
-        // HU 11 C1: Al presionar el botón, iniciar el juego
-        binding.btnPresioname.setOnClickListener {
-            viewModel.iniciarJuego()
-        }
+        } catch (e: Exception) { e.printStackTrace() }
     }
 
     override fun onPause() {
         super.onPause()
-
-        if (mediaPlayer?.isPlaying == true) {
-            mediaPlayer?.pause()
-        }
+        mediaPlayer?.pause()
     }
 
     override fun onResume() {
         super.onResume()
-
-        if (viewModel.isAudioEnabled.value == true && mediaPlayer?.isPlaying == false) {
-            mediaPlayer?.start()
-        }
+        if (viewModel.isAudioEnabled.value == true) mediaPlayer?.start()
     }
 
     override fun onDestroyView() {
