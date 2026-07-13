@@ -1,5 +1,6 @@
 package com.equipo8.picobotella.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -73,9 +74,18 @@ class CustomToolbarFragment : Fragment() {
             }
         }
 
+        // C6: HU 10 - Compartir aplicación (bottom sheet nativo del SO)
+
         binding.btnCompartir.setOnClickListener {
             animarClick(it) {
-                findNavController().navigate(R.id.action_home_to_compartir)
+                val mensaje = getString(R.string.mensaje_compartir)
+                val link = getString(R.string.link_compartir)
+                val intent = Intent(Intent.ACTION_SEND).apply {
+                    type = "text/plain"
+                    putExtra(Intent.EXTRA_SUBJECT, getString(R.string.titulo_compartir))
+                    putExtra(Intent.EXTRA_TEXT, "$mensaje\n\n$link")
+                }
+                startActivity(Intent.createChooser(intent, getString(R.string.compartir)))
             }
         }
     }
