@@ -1,22 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- HU 12: Mostrar reto aleatorio -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:gravity="center"
     android:padding="24dp"
-    android:gravity="center">
-    <!-- HU: Juego de la Botella (Mostrar Reto Aleatorio) -->
+    android:background="@drawable/bg_dialog_reto">
+
+    <!-- C1: Fondo negro degradado, transparencia sutil, bordes redondeados blancos -->
+    
+    <!-- C2: Círculo con borde blanco y fondo negro para la imagen del Pokémon -->
+    <FrameLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/bg_circle_pokemon"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:id="@+id/ivPokemon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:contentDescription="Pokémon aleatorio" />
+    </FrameLayout>
+
+    <!-- C3: Texto del reto aleatorio -->
     <TextView
         android:id="@+id/tvRetoSeleccionado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="22sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:paddingHorizontal="8dp"
+        android:paddingBottom="16dp" />
+
+    <!-- C4: Botón Cerrar parcialmente fuera del diálogo -->
     <Button
         android:id="@+id/btnCerrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/confirmar" />
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorNaranja"
+        android:text="@string/cerrar"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:elevation="8dp"
+        android:translationZ="8dp"
+        android:minWidth="120dp" />
+
 </LinearLayout>

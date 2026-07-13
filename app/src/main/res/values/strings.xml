@@ -2,11 +2,12 @@
     <string name="app_name">PicoBotella</string>
 
     <!-- HU: Splash Screen -->
-    <string name="splash_welcome">Cargando PicoBotella...</string>
+    <string name="splash_welcome">pico botella</string>
 
     <!-- HU: Home Principal -->
     <string name="botella_del_juego">Botella del juego</string>
     <string name="presioname">Presióname</string>
+    <string name="ya">¡Ya!</string>
 
     <!-- HU: Juego de la Botella -->
     <string name="instrucciones">Instrucciones</string>
@@ -17,12 +18,13 @@
     <!-- HU: Gestión de Retos -->
     <string name="volver">Volver</string>
     <string name="reto_icono">Ícono del reto</string>
-    <string name="agregar_reto">Agregar Reto</string>
+    <string name="agregar_reto">Agregar reto</string>
     <string name="editar_reto">Editar Reto</string>
     <string name="eliminar_reto">¿Desea eliminar este reto?</string>
     <string name="confirmar">Confirmar</string>
     <string name="cancelar">Cancelar</string>
-    <string name="reto_descripcion_hint">Escribe el reto aquí</string>
+    <string name="guardar">Guardar</string>
+    <string name="reto_descripcion_hint">Escriba el reto</string>
 
     <!-- HU: Compartir App -->
     <string name="mensaje_compartir">App pico botella\nSolo los valientes lo juegan !!</string>
@@ -31,6 +33,11 @@
 
     <string name="calificar_app">Calificar la aplicación</string>
     <string name="audio_fondo">Silenciar o activar el audio de fondo</string>
+
+    <!-- HU 12: Mostrar reto aleatorio -->
+    <string name="cerrar">Cerrar</string>
+    <string name="cargando_pokemon">Cargando Pokémon...</string>
+    <string name="sin_retos_disponibles">No hay retos disponibles. Agrega retos primero.</string>
 
     <!-- HU 4.0: Calificar la aplicación -->
     <string name="calificar_titulo">Califica PicoBotella</string>
