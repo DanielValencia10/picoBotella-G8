@@ -32,6 +32,11 @@
     <string name="calificar_app">Calificar la aplicación</string>
     <string name="audio_fondo">Silenciar o activar el audio de fondo</string>
 
+    <!-- HU 12: Mostrar reto aleatorio -->
+    <string name="cerrar">Cerrar</string>
+    <string name="cargando_pokemon">Cargando Pokémon...</string>
+    <string name="sin_retos_disponibles">No hay retos disponibles. Agrega retos primero.</string>
+
     <!-- HU 4.0: Calificar la aplicación -->
     <string name="calificar_titulo">Califica PicoBotella</string>
     <string name="calificar_pregunta">¿Qué te pareció tu experiencia con PicoBotella?</string>

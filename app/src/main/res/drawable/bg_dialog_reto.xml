@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HU 12 C1: Fondo negro degradado con transparencia sutil y bordes redondeados blancos -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:startColor="#000000"
+        android:endColor="#33000000"
+        android:angle="270" />
+    <stroke
+        android:width="2dp"
+        android:color="@android:color/white" />
+    <corners android:radius="16dp" />
+</shape>
