@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.equipo8.picobotella.R
 import com.equipo8.picobotella.data.remote.RetrofitClient
 import com.equipo8.picobotella.databinding.DialogMostrarRetoBinding
@@ -32,7 +32,7 @@ class MostrarRetoDialog(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        isCancelable = false  // C6: No se cierra al hacer click fuera
+        isCancelable = false
     }
 
     override fun onCreateView(
@@ -46,13 +46,9 @@ class MostrarRetoDialog(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // C3: Mostrar descripción del reto
         binding.tvRetoSeleccionado.text = reto.descripcion
-
-        // C2: Cargar Pokémon aleatorio desde la API
         cargarPokemonAleatorio()
 
-        // C5: Botón Cerrar -> cierra el diálogo y ejecuta callback
         binding.btnCerrar.setOnClickListener {
             onDialogDismiss()
             dismiss()
@@ -66,22 +62,18 @@ class MostrarRetoDialog(
                 val pokemons = response.pokemon
                 if (pokemons.isNotEmpty()) {
                     val pokemonAleatorio = pokemons.random()
+                    // Reemplazamos 'http' por 'https' porque la API de Biuni usa http y Android lo bloquea
+                    val imageUrl = pokemonAleatorio.img.replace("http://", "https://")
+                    
                     withContext(Dispatchers.Main) {
                         Glide.with(requireContext())
-                            .load(pokemonAleatorio.img)
-                            .placeholder(R.drawable.ic_botella_background)
-                            .error(R.drawable.ic_botella_background)
+                            .load(imageUrl)
+                            .transition(DrawableTransitionOptions.withCrossFade()) // Animación suave al aparecer
                             .into(binding.ivPokemon)
                     }
                 }
             } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(
-                        requireContext(),
-                        "Error al cargar Pokémon: ${e.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+                e.printStackTrace()
             }
         }
     }
@@ -89,13 +81,10 @@ class MostrarRetoDialog(
     override fun onStart() {
         super.onStart()
         dialog?.window?.setLayout(
-            (resources.displayMetrics.widthPixels * 0.9).toInt(),
+            (resources.displayMetrics.widthPixels * 0.85).toInt(),
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
-        // Fondo transparente para que se vea el fondo negro degradado del diálogo
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        // No permitir cerrar al hacer click fuera
-        dialog?.setCanceledOnTouchOutside(false)
     }
 
     override fun onDestroyView() {
