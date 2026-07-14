@@ -20,8 +20,8 @@
     <!-- Contenedor de la botella centrado totalmente en la pantalla -->
     <FrameLayout
         android:id="@+id/bottleContainer"
-        android:layout_width="280dp"
-        android:layout_height="280dp"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,9 +40,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="60sp"
+            android:textSize="70sp"
             android:textStyle="bold"
-            android:textColor="@color/colorBlanco"
+            android:textColor="@color/colorNaranja"
             android:visibility="gone"
             tools:text="3" />
     </FrameLayout>
@@ -58,7 +58,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:backgroundTint="#FF6F00"
+        android:backgroundTint="@color/colorNaranja"
         android:layout_marginBottom="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

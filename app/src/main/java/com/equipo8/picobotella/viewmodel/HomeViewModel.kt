@@ -48,12 +48,20 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
      * Inicia el contador regresivo de 3 a 0, obtiene un reto aleatorio y controla el estado del juego.
      * Corresponde a HU 11 (Giro de botella) y HU 12 (Mostrar reto aleatorio).
      */
-    fun iniciarJuego() {
-        if (_isJugando.value == true) return  // No permitir múltiples juegos simultáneos
+    fun iniciarPartida() {
+        if (_isJugando.value == true) return
 
         _isJugando.value = true
         _sinRetos.value = false
         audioEstabaEncendido = _isAudioEnabled.value ?: true
+        _isAudioEnabled.value = false
+    }
+
+    /**
+     * Inicia el contador regresivo de 3 a 0, obtiene un reto aleatorio y controla el estado del juego.
+     * Corresponde a HU 11 (Giro de botella) y HU 12 (Mostrar reto aleatorio).
+     */
+    fun iniciarJuego() {
 
         viewModelScope.launch {
             // Contador regresivo de 3 a 0
