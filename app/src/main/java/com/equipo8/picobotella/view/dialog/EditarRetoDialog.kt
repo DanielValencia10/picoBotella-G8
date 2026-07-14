@@ -1,10 +1,14 @@
 package com.equipo8.picobotella.view.dialog
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
+import com.equipo8.picobotella.R
 import com.equipo8.picobotella.databinding.DialogEditarRetoBinding
 import com.equipo8.picobotella.model.Reto
 
@@ -41,6 +45,21 @@ class EditarRetoDialog(
         binding.btnCancelar.setOnClickListener {
             dismiss()
         }
+
+        // Guardar solo se habilita si el texto cambió respecto al reto original
+        binding.etReto.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val nuevoTexto = s?.toString().orEmpty().trim()
+                val fueEditado = nuevoTexto.isNotEmpty() && nuevoTexto != reto.descripcion
+                binding.btnGuardar.isEnabled = fueEditado
+                binding.btnGuardar.backgroundTintList = ContextCompat.getColorStateList(
+                    requireContext(),
+                    if (fueEditado) R.color.colorNaranja else android.R.color.darker_gray
+                )
+            }
+            override fun afterTextChanged(s: Editable?) {}
+        })
 
         // Botón Guardar actualiza el reto en la base de datos y cierra el diálogo
         binding.btnGuardar.setOnClickListener {

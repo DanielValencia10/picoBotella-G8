@@ -20,6 +20,11 @@ class EliminarRetoDialog(
     private var _binding: DialogEliminarRetoBinding? = null
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        isCancelable = false
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,13 +35,27 @@ class EliminarRetoDialog(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnEliminar.setOnClickListener {
+        binding.tvDescripcionReto.text = reto.descripcion
+
+        // Texto "SI" elimina el reto de la base de datos y cierra el diálogo
+        binding.tvSi.setOnClickListener {
             onEliminar(reto)
             dismiss()
         }
-        binding.btnCancelar.setOnClickListener {
+
+        // Texto "NO" cierra el diálogo sin eliminar
+        binding.tvNo.setOnClickListener {
             dismiss()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.9).toInt(),
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
     }
 
     override fun onDestroyView() {
