@@ -20,10 +20,12 @@
     <string name="reto_icono">Ícono del reto</string>
     <string name="agregar_reto">Agregar reto</string>
     <string name="editar_reto">Editar Reto</string>
-    <string name="eliminar_reto">¿Desea eliminar este reto?</string>
+    <string name="eliminar_reto">¿Desea eliminar el siguiente reto?:</string>
     <string name="confirmar">Confirmar</string>
     <string name="cancelar">Cancelar</string>
     <string name="guardar">Guardar</string>
+    <string name="si">SI</string>
+    <string name="no">NO</string>
     <string name="reto_descripcion_hint">Escriba el reto</string>
 
     <!-- HU: Compartir App -->
