@@ -24,6 +24,9 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var viewModel: HomeViewModel
     private var mediaPlayer: MediaPlayer? = null
+    private var sonidoBotella: MediaPlayer? = null
+    private var anguloActual = 0f
+    private var girando = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -84,7 +87,12 @@ class HomeFragment : Fragment() {
 
         // Ocultar botón mientras se está "girando" (contando)
         viewModel.isJugando.observe(viewLifecycleOwner) { jugando ->
-            binding.btnPresioname.visibility = if (jugando) View.GONE else View.VISIBLE
+            if (jugando) {
+                binding.btnPresioname.visibility = View.GONE
+            } else {
+                binding.btnPresioname.visibility = View.VISIBLE
+                configurarAnimacionBoton()
+            }
         }
 
         // Control de audio
@@ -97,9 +105,62 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun girarBotella(onFinish: () -> Unit) {
+
+        if (girando) return
+
+        girando = true
+
+        val vueltas = (5..8).random()
+
+        val nuevoAngulo = anguloActual + vueltas * 360 + (0..359).random()
+
+        val animator = android.animation.ObjectAnimator.ofFloat(
+            binding.imgBotella,
+            View.ROTATION,
+            anguloActual,
+            nuevoAngulo.toFloat()
+        )
+
+        animator.duration = (3000L..5000L).random()
+
+        animator.addListener(object : android.animation.Animator.AnimatorListener {
+
+            override fun onAnimationStart(animation: android.animation.Animator) {
+                mediaPlayer?.pause()
+                sonidoBotella?.start()
+            }
+
+            override fun onAnimationEnd(animation: android.animation.Animator) {
+
+                anguloActual = nuevoAngulo % 360f
+                girando = false
+
+                sonidoBotella?.pause()
+                sonidoBotella?.seekTo(0)
+
+                onFinish()
+            }
+
+            override fun onAnimationCancel(animation: android.animation.Animator) {}
+
+            override fun onAnimationRepeat(animation: android.animation.Animator) {}
+        })
+
+        animator.start()
+    }
+
     private fun configurarOyentesEventos() {
         binding.btnPresioname.setOnClickListener {
-            viewModel.iniciarJuego() // Llama a la lógica completa (conteo + reto)
+
+            binding.btnPresioname.clearAnimation()
+            binding.btnPresioname.visibility = View.GONE
+
+            viewModel.iniciarPartida()
+
+            girarBotella {
+                viewModel.iniciarJuego() // Llama a la lógica completa (conteo + reto)
+            }
         }
     }
 
@@ -114,9 +175,17 @@ class HomeFragment : Fragment() {
 
     private fun inicializarMusicaFondo() {
         try {
-            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.sonido_fondo).apply {
+            mediaPlayer = MediaPlayer.create(
+                requireContext(),
+                R.raw.sonido_fondo).apply {
                 isLooping = true
             }
+
+            sonidoBotella = MediaPlayer.create(
+                requireContext(),
+                R.raw.botella_girando
+            )
+
         } catch (e: Exception) { e.printStackTrace() }
     }
 
