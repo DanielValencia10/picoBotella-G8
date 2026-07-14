@@ -20,6 +20,11 @@ class EditarRetoDialog(
     private var _binding: DialogEditarRetoBinding? = null
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        isCancelable = false
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,13 +36,29 @@ class EditarRetoDialog(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.etReto.setText(reto.descripcion)
-        binding.btnActualizar.setOnClickListener {
-            val nuevoTexto = binding.etReto.text.toString()
+
+        // Botón Cancelar cierra el diálogo sin guardar
+        binding.btnCancelar.setOnClickListener {
+            dismiss()
+        }
+
+        // Botón Guardar actualiza el reto en la base de datos y cierra el diálogo
+        binding.btnGuardar.setOnClickListener {
+            val nuevoTexto = binding.etReto.text.toString().trim()
             if (nuevoTexto.isNotEmpty()) {
                 onActualizar(reto.copy(descripcion = nuevoTexto))
                 dismiss()
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.9).toInt(),
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
     }
 
     override fun onDestroyView() {
