@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HU: Toolbar Personalizada -->
+<!-- Criterio 1: fondo negro, bordes redondeados y componentes en color naranja -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/bg_toolbar"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp">
+
+    <!-- Criterio 2: calificar la app -> HU 4.0 (estrella con relleno negro) -->
+    <ImageButton
+        android:id="@+id/btnCalificar"
+        android:layout_width="48dp"
+        android:layout_height="44dp"
+        android:padding="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_star"
+        android:contentDescription="@string/calificar_app" />
+
+    <!-- Criterio 3: interruptor de audio de fondo -->
+    <ImageButton
+        android:id="@+id/btnAudio"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:padding="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_volume_on"
+        android:contentDescription="@string/audio_fondo" />
+
+    <!-- Criterio 4: instrucciones del juego -> HU 5.0 (ícono de control de juegos) -->
+    <ImageButton
+        android:id="@+id/btnInstrucciones"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:padding="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_instrucciones"
+        android:contentDescription="@string/instrucciones" />
+
+    <!-- Criterio 5: agregar y listar retos -> HU 6.0 (círculo naranja con + negro) -->
+    <ImageButton
+        android:id="@+id/btnRetos"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:padding="2dp"
+        android:background="@drawable/bg_circle_naranja"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_add"
+        android:contentDescription="@string/retos" />
+
+    <!-- Criterio 6: compartir la app -> HU 10 -->
+    <ImageButton
+        android:id="@+id/btnCompartir"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:padding="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_compartir"
+        android:contentDescription="@string/compartir" />
+
+</LinearLayout>

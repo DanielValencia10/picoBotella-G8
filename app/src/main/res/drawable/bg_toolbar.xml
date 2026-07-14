@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Criterio 1: fondo negro con bordes redondeados para la toolbar -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/colorNegro" />
+    <corners android:radius="26dp" />
+</shape>

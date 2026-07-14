@@ -22,6 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "picobotellaG8"
+rootProject.name = "PicoBotella"
 include(":app")
- 

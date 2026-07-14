@@ -1,3 +1,53 @@
 <resources>
-    <string name="app_name">picobotellaG8</string>
+    <string name="app_name">PicoBotella</string>
+
+    <!-- HU: Splash Screen -->
+    <string name="splash_welcome">pico botella</string>
+
+    <!-- HU: Home Principal -->
+    <string name="botella_del_juego">Botella del juego</string>
+    <string name="presioname">Presióname</string>
+    <string name="ya">¡Ya!</string>
+
+    <!-- HU: Juego de la Botella -->
+    <string name="instrucciones">Instrucciones</string>
+    <string name="retos">Retos</string>
+    <string name="compartir">Compartir</string>
+    <string name="girar_botella">¡Girar Botella!</string>
+
+    <!-- HU: Gestión de Retos -->
+    <string name="volver">Volver</string>
+    <string name="reto_icono">Ícono del reto</string>
+    <string name="agregar_reto">Agregar reto</string>
+    <string name="editar_reto">Editar Reto</string>
+    <string name="eliminar_reto">¿Desea eliminar el siguiente reto?:</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="guardar">Guardar</string>
+    <string name="si">SI</string>
+    <string name="no">NO</string>
+    <string name="reto_descripcion_hint">Escriba el reto</string>
+
+    <!-- HU: Compartir App -->
+    <string name="mensaje_compartir">App pico botella\nSolo los valientes lo juegan !!</string>
+    <string name="link_compartir">https://play.google.com/store/apps/details?id=com.nequi.MobileApp&amp;hl=es_419&amp;gl=es</string>
+    <string name="titulo_compartir">App pico botella</string>
+
+    <string name="calificar_app">Calificar la aplicación</string>
+    <string name="audio_fondo">Silenciar o activar el audio de fondo</string>
+
+    <!-- HU 12: Mostrar reto aleatorio -->
+    <string name="cerrar">Cerrar</string>
+    <string name="cargando_pokemon">Cargando Pokémon...</string>
+    <string name="sin_retos_disponibles">No hay retos disponibles. Agrega retos primero.</string>
+
+    <!-- HU 4.0: Calificar la aplicación -->
+    <string name="calificar_titulo">Califica PicoBotella</string>
+    <string name="calificar_pregunta">¿Qué te pareció tu experiencia con PicoBotella?</string>
+    <string name="calificar_aviso_tienda">Como la app aún no está publicada en Google Play, al confirmar tu calificación te llevaremos a la ficha de Nequi en la Play Store para simular el proceso de calificación.</string>
+    <string name="calificar_enviar">Enviar calificación</string>
+    <string name="calificar_seleccion_vacia">Selecciona al menos una estrella para calificar</string>
+    <string name="calificar_agradecimiento">¡Gracias por tu calificación!</string>
+    <string name="url_play_store_simulada">https://play.google.com/store/apps/details?id=com.nequi.MobileApp&amp;hl=es_419&amp;gl=es</string>
+
 </resources>

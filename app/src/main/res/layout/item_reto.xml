@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- C4: Ítem de reto con ícono superior izq., botones editar/eliminar, línea horizontal y descripción -->
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="2dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="12dp">
+
+        <!-- Ícono superior izquierda (libre elección) -->
+        <ImageView
+            android:id="@+id/icReto"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="@string/reto_icono"
+            android:src="@android:drawable/ic_menu_agenda"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Botón editar (superior derecha) -->
+        <ImageButton
+            android:id="@+id/btnEditar"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/editar_reto"
+            android:padding="4dp"
+            android:src="@android:drawable/ic_menu_edit"
+            app:tint="#137C5F"
+            app:layout_constraintEnd_toStartOf="@+id/btnEliminar"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Botón eliminar (superior derecha) -->
+        <ImageButton
+            android:id="@+id/btnEliminar"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/eliminar_reto"
+            android:padding="4dp"
+            android:src="@android:drawable/ic_menu_delete"
+            app:tint="#930A0A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Línea horizontal divisoria -->
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="#DDDDDD"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/icReto" />
+
+        <!-- Descripción del reto (parte inferior) -->
+        <TextView
+            android:id="@+id/tvDescripcion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="#212121"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
