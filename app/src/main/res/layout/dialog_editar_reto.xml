@@ -1,26 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- HU 8.0: Editar reto -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
-    <!-- HU: Gestión de Retos -->
+    android:background="@color/colorBlanco"
+    android:padding="24dp">
+
     <TextView
+        android:id="@+id/tvTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/editar_reto"
+        android:textColor="@color/colorNegro"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/etReto"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/colorNaranja"
         android:hint="@string/reto_descripcion_hint"
         android:importantForAutofill="no"
-        android:inputType="text" />
+        android:inputType="textCapSentences"
+        android:textColor="@color/colorNegro"
+        android:textColorHint="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitulo" />
+
     <Button
-        android:id="@+id/btnActualizar"
-        android:layout_width="match_parent"
+        android:id="@+id/btnCancelar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/confirmar" />
-</LinearLayout>
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/colorNaranja"
+        android:text="@string/cancelar"
+        android:textColor="@color/colorBlanco"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/btnGuardar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etReto" />
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/colorNaranja"
+        android:text="@string/guardar"
+        android:textColor="@color/colorBlanco"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnCancelar"
+        app:layout_constraintTop_toBottomOf="@id/etReto" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
